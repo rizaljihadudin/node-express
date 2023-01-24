@@ -7,9 +7,18 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 
 const port = 3000
 
+/** middleware */
+const myLogger = (req, res, next) => {
+    req.time = new Date();
+    next()
+}
+
+app.use(myLogger);
 
 app.get('/', (req, res) => {
-  res.send('Home')
+    let responseText = 'Hello World!<br>'
+    responseText += `<small>Requested at: ${req.time.toString()}</small>`
+    res.send(responseText)
 })
 
 app.get('/about', (req, res) => {
