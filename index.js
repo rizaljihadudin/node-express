@@ -32,6 +32,10 @@ app.get('/about', (req, res) => {
     res.render('pages/about')
 })
 
+app.get('/login', (req, res) => {
+    res.render('pages/blogs/login')
+})
+
 app.get('/users', (req, res) => {
     res.send('Get User')
 })
