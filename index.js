@@ -3,7 +3,7 @@ const blogRouter = require('./router/blogs')
 const app = express()
 
 app.use(express.json()) // for parsing application/json
-app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencodeds
 
 const port = 3000
 
@@ -15,10 +15,16 @@ const myLogger = (req, res, next) => {
 
 app.use(myLogger);
 
+
+/** set template engine EJS */
+app.set('view engine', 'ejs')
+
 app.get('/', (req, res) => {
-    let responseText = 'Hello World!<br>'
-    responseText += `<small>Requested at: ${req.time.toString()}</small>`
-    res.send(responseText)
+    const blogs = {
+        title : 'Harry Potter',
+        author : 'Raldin'
+    }
+    res.render('index', { blogs : blogs })
 })
 
 app.get('/about', (req, res) => {
