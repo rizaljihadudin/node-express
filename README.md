@@ -1,3 +1,3 @@
-# Node ExpressJS
+# Blogsite.
 
-Learning about Express JS (routing, MVC structure, simple API)
+A Simple Blog app with ExpressJS
