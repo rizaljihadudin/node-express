@@ -4,6 +4,7 @@ const app = express()
 
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencodeds
+app.use(express.static('public')); 
 
 const port = 3000
 
@@ -24,11 +25,11 @@ app.get('/', (req, res) => {
         title : 'Harry Potter',
         author : 'Raldin'
     }
-    res.render('index', { blogs : blogs })
+    res.render('pages/index', { blogs : blogs })
 })
 
 app.get('/about', (req, res) => {
-    res.send('<h1>About</h1>')
+    res.render('pages/about')
 })
 
 app.get('/users', (req, res) => {
