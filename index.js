@@ -1,5 +1,6 @@
 const express = require('express')
 const blogRouter = require('./router/blogs')
+const homeRouter = require('./router/home')
 const app = express()
 
 app.use(express.json()) // for parsing application/json
@@ -19,14 +20,6 @@ app.use(myLogger);
 
 /** set template engine EJS */
 app.set('view engine', 'ejs')
-
-app.get('/', (req, res) => {
-    const blogs = {
-        title : 'Harry Potter',
-        author : 'Raldin'
-    }
-    res.render('pages/index', { blogs : blogs })
-})
 
 app.get('/about', (req, res) => {
     res.render('pages/about')
@@ -52,6 +45,7 @@ app.delete('/users/:userId', (req, res) => {
     res.send(req.params)
 })
 
+app.use("/", homeRouter)
 app.use(blogRouter)
 
 

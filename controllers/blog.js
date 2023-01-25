@@ -1,39 +1,15 @@
 
 
 let blogs = [
-    { id : 1, title : 'Buku 1', author : 'Aceng'},
-    { id : 2, title : 'Buku 2', author : 'Anabul'},
-    { id : 3, title : 'Buku 3', author : 'Asep'}
+    { id : 1, title : 'Buku 1', author : 'Aceng', desc : 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. '},
+    { id : 2, title : 'Buku 2', author : 'Anabul', desc : 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. '},
+    { id : 3, title : 'Buku X', author : 'Asep', desc : 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. '}
 ]
 
 module.exports = {
     /** Get all Blog data */
     getBlogs: async(req, res) => {
-        if(blogs.length > 0){
-            res.json({
-                error : false,
-                status : 200,
-                message : {
-                    result : true,
-                    message : 'Successfully get data Blogs',
-                    data : blogs
-                },
-                method : req.method,
-                url : req.url
-            })
-        }else{
-            res.json({
-                error : false,
-                status : 200,
-                message : {
-                    result : false,
-                    message : 'Successfully get data Blogs',
-                    data : 'Data masih kosong'
-                },
-                method : req.method,
-                url : req.url
-            })
-        }
+        res.render('pages/index', { blogs })
     },
 
     /** untuk menyimpan data */
